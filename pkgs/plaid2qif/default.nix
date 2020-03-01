@@ -6,7 +6,7 @@ python3Packages.buildPythonApplication rec {
 
   src = python3Packages.fetchPypi {
     inherit pname version;
-    sha256 = "0000000000000000000000000000000000000000000000000000";
+    sha256 = "0h92g397y9d7qb5hi6gdnhq077q80v0kkcicbyglal4fiihyp2c4";
   };
 
   # TODO: See if we can fix setup.py instead.
