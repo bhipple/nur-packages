@@ -14,5 +14,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  plaid2qif = pkgs.callPackage ./pkgs/plaid2qif { };
+  gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
+  libgccjit = pkgs.callPackage ./pkgs/libgccjit {};
+  plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
 }
