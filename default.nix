@@ -15,6 +15,7 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
+  gmpydl = pkgs.callPackage ./pkgs/gmpydl {};
   libgccjit = pkgs.callPackage ./pkgs/libgccjit {};
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
 
