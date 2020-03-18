@@ -21,7 +21,10 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     cp gmpydl.py $out/bin/
-    wrapPythonPrograms
+
+    wrapProgram $out/bin/gmpydl.py \
+        --prefix PATH : "$PATH" \
+        --prefix PYTHONPATH : "$PYTHONPATH"
   '';
 
   meta = with stdenv.lib; {
