@@ -13,6 +13,23 @@ self: super: let
       ];
     }))
 
+
+    emacsql
+    closql
+    emacsql-sqlite
+    flycheck-elsa
+    forge
+    gh
+    ghub
+    gist
+    github-clone
+    github-search
+    logito
+    marshal
+    names
+    terminal-here
+    tmux-pane
+
     # Marked as broken
     # company-rtags
     # flycheck-rtags
@@ -20,6 +37,7 @@ self: super: let
 
     # Not packaged
     # evil-unimpaired
+    # hybrid-mode
 
     ep.elpaPackages.xclip
 
