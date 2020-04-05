@@ -12,7 +12,15 @@
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
-  overlays = import ./overlays; # nixpkgs overlays
+  overlays = map import [
+    ./overlays/ami.nix
+    ./overlays/bhipple-nur-overlay.nix
+    ./overlays/emacs-overlay.nix
+    ./overlays/envs.nix
+    ./overlays/hie.nix
+    ./overlays/mkl.nix
+    ./overlays/spacemacs.nix
+  ];
 
   # gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
   # libgccjit = pkgs.callPackage ./pkgs/libgccjit {};
