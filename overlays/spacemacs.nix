@@ -39,6 +39,10 @@ self: super: let
     # evil-unimpaired
     # hybrid-mode
 
+    # Disable until we bump to a version w/ https://github.com/immerrr/lua-mode/pull/166 fixed
+    # lua-mode
+    # company-lua
+
     ep.elpaPackages.xclip
 
     ac-ispell
@@ -87,7 +91,6 @@ self: super: let
     company-ghci
     company-go
     company-lsp
-    company-lua
     company-nixos-options
     company-php
     company-plsense
@@ -304,7 +307,6 @@ self: super: let
     lsp-python-ms
     lsp-treemacs
     lsp-ui
-    lua-mode
     macrostep
     magit
     magit-gitflow
