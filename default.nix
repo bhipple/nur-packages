@@ -14,12 +14,13 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
+  # gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
+  # libgccjit = pkgs.callPackage ./pkgs/libgccjit {};
+
   gmpydl = pkgs.callPackage ./pkgs/gmpydl {};
-  libgccjit = pkgs.callPackage ./pkgs/libgccjit {};
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
 
   # ledger-cli only gets a release every couple years; build the latest commit
   # off master.
-  ledger-git = pkgs.callPackage ./pkgs/ledger {};
+  # ledger-git = pkgs.callPackage ./pkgs/ledger {};
 }
