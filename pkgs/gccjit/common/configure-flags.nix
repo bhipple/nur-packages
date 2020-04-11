@@ -5,7 +5,6 @@
 , version
 
 , gmp, mpfr, libmpc, libelf, isl
-, cloog ? null
 
 , enableLTO
 , enableMultilib
@@ -22,7 +21,6 @@
 , langObjCpp
 }:
 
-assert cloog != null -> stdenv.lib.versionOlder version "5";
 assert langJava -> stdenv.lib.versionOlder version "7";
 
 let
@@ -30,8 +28,8 @@ let
     buildPlatform hostPlatform targetPlatform
     lib;
 
-  crossMingw = targetPlatform != hostPlatform && targetPlatform.libc == "msvcrt";
-  crossDarwin = targetPlatform != hostPlatform && targetPlatform.libc == "libSystem";
+  crossMingw = false;
+  crossDarwin = false;
 
   crossConfigureFlags =
     # Ensure that -print-prog-name is able to find the correct programs.
@@ -59,8 +57,7 @@ let
       "--enable-sjlj-exceptions"
       "--disable-win32-registry"
     ] else [
-      (if crossDarwin then "--with-sysroot=${lib.getLib libcCross}/share/sysroot"
-       else                "--with-headers=${lib.getDev libcCross}${libcCross.incdir or "/include"}")
+      "--with-headers=${lib.getDev libcCross}${libcCross.incdir or "/include"}"
       "--enable-__cxa_atexit"
       "--enable-long-long"
       "--enable-threads=${if targetPlatform.isUnix then "posix"
@@ -120,7 +117,6 @@ let
           ++ lib.optional langGo       "go"
           ++ lib.optional langObjC     "objc"
           ++ lib.optional langObjCpp   "obj-c++"
-          ++ lib.optionals crossDarwin [ "objc" "obj-c++" ]
           )
         )
       }"
@@ -137,11 +133,6 @@ let
 
     # Optional features
     ++ lib.optional (isl != null) "--with-isl=${isl}"
-    ++ lib.optionals (cloog != null) [
-      "--with-cloog=${cloog}"
-      "--disable-cloog-version-check"
-      "--enable-cloog-backend=isl"
-    ]
 
     # Java options
     ++ lib.optionals langJava [
