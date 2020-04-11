@@ -1,20 +1,12 @@
 source $stdenv/setup
 
-
 oldOpts="$(shopt -po nounset)" || true
 set -euo pipefail
-
 
 export NIX_FIXINC_DUMMY="$NIX_BUILD_TOP/dummy"
 mkdir "$NIX_FIXINC_DUMMY"
 
-
-if test "$staticCompiler" = "1"; then
-    EXTRA_LDFLAGS="-static"
-else
-    EXTRA_LDFLAGS="-Wl,-rpath,${!outputLib}/lib"
-fi
-
+EXTRA_LDFLAGS="-Wl,-rpath,${!outputLib}/lib -Wl,-rpath,$out/lib/gcc/x86_64-unknown-linux-gnu/9.3.0 -Wl,-L,$out/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
 
 # GCC interprets empty paths as ".", which we don't want.
 if test -z "${CPATH-}"; then unset CPATH; fi
@@ -108,7 +100,7 @@ if test "$noSysDirs" = "1"; then
         "NATIVE_SYSTEM_HEADER_DIR=$NIX_FIXINC_DUMMY"
 
         "LDFLAGS_FOR_BUILD=$EXTRA_BUILD_LDFLAGS"
-        #"LDFLAGS=$EXTRA_LDFLAGS"
+        "LDFLAGS=$EXTRA_LDFLAGS"
         "LDFLAGS_FOR_TARGET=$EXTRA_TARGET_LDFLAGS"
 
         "CFLAGS_FOR_BUILD=$EXTRA_BUILD_FLAGS $EXTRA_BUILD_LDFLAGS"
@@ -116,8 +108,8 @@ if test "$noSysDirs" = "1"; then
         "FLAGS_FOR_BUILD=$EXTRA_BUILD_FLAGS $EXTRA_BUILD_LDFLAGS"
 
         # It seems there is a bug in GCC 5
-        #"CFLAGS=$EXTRA_FLAGS $EXTRA_LDFLAGS"
-        #"CXXFLAGS=$EXTRA_FLAGS $EXTRA_LDFLAGS"
+        "CFLAGS=$EXTRA_FLAGS $EXTRA_LDFLAGS"
+        "CXXFLAGS=$EXTRA_FLAGS $EXTRA_LDFLAGS"
 
         "CFLAGS_FOR_TARGET=$EXTRA_TARGET_FLAGS $EXTRA_TARGET_LDFLAGS"
         "CXXFLAGS_FOR_TARGET=$EXTRA_TARGET_FLAGS $EXTRA_TARGET_LDFLAGS"
