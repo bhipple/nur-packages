@@ -111,12 +111,7 @@ let
         lib.concatStrings (lib.intersperse ","
           (  lib.optional langC        "c"
           ++ lib.optional langCC       "c++"
-          ++ lib.optional langFortran  "fortran"
-          ++ lib.optional langJava     "java"
           ++ lib.optional langJit      "jit"
-          ++ lib.optional langGo       "go"
-          ++ lib.optional langObjC     "objc"
-          ++ lib.optional langObjCpp   "obj-c++"
           )
         )
       }"
