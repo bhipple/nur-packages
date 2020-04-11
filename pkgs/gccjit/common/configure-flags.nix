@@ -13,15 +13,8 @@
 
 , langC
 , langCC
-, langFortran
-, langJava ? false, javaAwtGtk ? false, javaAntlr ? null, javaEcj ? null
 , langJit ? false
-, langGo
-, langObjC
-, langObjCpp
 }:
-
-assert langJava -> stdenv.lib.versionOlder version "7";
 
 let
   inherit (stdenv)
@@ -128,18 +121,6 @@ let
 
     # Optional features
     ++ lib.optional (isl != null) "--with-isl=${isl}"
-
-    # Java options
-    ++ lib.optionals langJava [
-      "--with-ecj-jar=${javaEcj}"
-
-      # Follow Sun's layout for the convenience of IcedTea/OpenJDK.  See
-      # <http://mail.openjdk.java.net/pipermail/distro-pkg-dev/2010-April/008888.html>.
-      "--enable-java-home"
-      "--with-java-home=\${prefix}/lib/jvm/jre"
-    ]
-    ++ lib.optional javaAwtGtk "--enable-java-awt=gtk"
-    ++ lib.optional (langJava && javaAntlr != null) "--with-antlr-jar=${javaAntlr}"
 
     ++ (import ../common/platform-flags.nix { inherit (stdenv) lib targetPlatform; })
     ++ lib.optionals (targetPlatform != hostPlatform) crossConfigureFlags

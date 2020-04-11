@@ -1,8 +1,5 @@
 { stdenv, targetPackages, fetchurl, fetchpatch, noSysDirs
-, langC ? true, langCC ? true, langFortran ? false
-, langObjC ? stdenv.targetPlatform.isDarwin
-, langObjCpp ? stdenv.targetPlatform.isDarwin
-, langGo ? false
+, langC ? true, langCC ? true
 , langJit ? true
 , profiledCompiler ? false
 , staticCompiler ? false
@@ -31,12 +28,6 @@
 # LTO needs libelf and zlib.
 assert libelf != null -> zlib != null;
 
-# Make sure we get GNU sed.
-assert stdenv.hostPlatform.isDarwin -> gnused != null;
-
-# The go frontend is written in c++
-assert langGo -> langCC;
-
 # threadsCross is just for MinGW
 assert threadsCross != null -> stdenv.targetPlatform.isWindows;
 
@@ -51,12 +42,10 @@ let majorVersion = "9";
     patches =
          optional (targetPlatform != hostPlatform) ../libstdc++-target.patch
       ++ optional noSysDirs ../no-sys-dirs.patch
-      ++ optional langFortran ../gfortran-driving.patch
-      ++ optional (targetPlatform.libc == "musl" && targetPlatform.isPower) ../ppc-musl.patch
     ;
 
     /* Cross-gcc settings (build == host != target) */
-    crossMingw = targetPlatform != hostPlatform && targetPlatform.libc == "msvcrt";
+    crossMingw = false;
     stageNameAddon = if crossStageStatic then "stage-static" else "stage-final";
     crossNameAddon = optionalString (targetPlatform != hostPlatform) "${targetPlatform.config}-${stageNameAddon}-";
 
@@ -159,11 +148,7 @@ stdenv.mkDerivation ({
 
   NIX_LDFLAGS = stdenv.lib.optionalString  hostPlatform.isSunOS "-lm -ldl";
 
-  preConfigure = import ../common/pre-configure.nix {
-    inherit (stdenv) lib;
-    inherit version hostPlatform langGo;
-  };
-
+  preConfigure = "";
   dontDisableStatic = true;
 
   # TODO(@Ericson2314): Always pass "--target" and always prefix.
@@ -185,11 +170,7 @@ stdenv.mkDerivation ({
 
       langC
       langCC
-      langFortran
-      langGo
       langJit
-      langObjC
-      langObjCpp
       ;
   };
 
@@ -229,11 +210,6 @@ stdenv.mkDerivation ({
     EXTRA_TARGET_LDFLAGS
     ;
 
-  passthru = {
-    inherit langC langCC langObjC langObjCpp langFortran langGo version;
-    isGNU = true;
-  };
-
   enableParallelBuilding = true;
   inherit enableMultilib;
 
@@ -242,25 +218,9 @@ stdenv.mkDerivation ({
   meta = {
     homepage = "https://gcc.gnu.org/";
     license = stdenv.lib.licenses.gpl3Plus;  # runtime support libraries are typically LGPLv3+
-    description = "GNU Compiler Collection, version ${version}"
-      + (if stripped then "" else " (with debugging info)");
-
-    longDescription = ''
-      The GNU Compiler Collection includes compiler front ends for C, C++,
-      Objective-C, Fortran, OpenMP for C/C++/Fortran, and Ada, as well as
-      libraries for these languages (libstdc++, libgomp,...).
-
-      GCC development is a part of the GNU Project, aiming to improve the
-      compiler used in the GNU system including the GNU/Linux variant.
-    '';
-
+    description = "GNU Compiler Collection";
     maintainers = with stdenv.lib.maintainers; [ synthetica ];
-
-    platforms =
-      stdenv.lib.platforms.linux ++
-      stdenv.lib.platforms.freebsd ++
-      stdenv.lib.platforms.illumos ++
-      stdenv.lib.platforms.darwin;
+    platforms = stdenv.lib.platforms.linux;
   };
 }
 
