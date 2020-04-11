@@ -22,7 +22,7 @@
     ./overlays/spacemacs.nix
   ];
 
-  gccemacs = pkgs.callPackage ./pkgs/gccemacs { };
+  gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
 
   # This technically builds, but it doesn't work yet
   gccjit = pkgs.callPackage ./pkgs/gccjit/9 {
