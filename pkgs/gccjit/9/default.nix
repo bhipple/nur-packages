@@ -204,8 +204,12 @@ stdenv.mkDerivation ({
       inherit stdenv crossStageStatic libcCross threadsCross;
     })
     EXTRA_TARGET_FLAGS
-    EXTRA_TARGET_LDFLAGS
     ;
+
+  EXTRA_TARGET_LDFLAGS = [
+    "-Wl,-L$out/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
+    "-Wl,-rpath $out/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
+  ];
 
   enableParallelBuilding = true;
   inherit enableMultilib;
@@ -218,11 +222,6 @@ stdenv.mkDerivation ({
     maintainers = with stdenv.lib.maintainers; [ synthetica ];
     platforms = stdenv.lib.platforms.linux;
   };
-}
-
-// optionalAttrs (targetPlatform != hostPlatform && targetPlatform.libc == "msvcrt" && crossStageStatic) {
-  makeFlags = [ "all-gcc" "all-target-libgcc" ];
-  installTargets = "install-gcc install-target-libgcc";
 }
 
 // optionalAttrs (enableMultilib) { dontMoveLib64 = true; }
