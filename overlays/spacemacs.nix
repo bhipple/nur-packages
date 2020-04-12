@@ -49,6 +49,9 @@ self: super: let
     # lua-mode
     # company-lua
 
+    # The owner deleted this off of their github!
+    # company-tern
+
     ep.elpaPackages.xclip
 
     ac-ispell
@@ -104,7 +107,6 @@ self: super: let
     company-restclient
     company-shell
     company-statistics
-    company-tern
     company-terraform
     company-web
     concurrent
