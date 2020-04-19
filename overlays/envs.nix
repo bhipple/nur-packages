@@ -57,6 +57,7 @@ in {
       self.gnupg
       self.gnutls
       self.graphviz
+      self.hydra-check
       self.icu
       self.imagemagick
       self.irssi
