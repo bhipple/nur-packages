@@ -47,6 +47,7 @@ in
       name = "bigEnv";
       paths = [
         self.alsaUtils
+        self.anki
         self.aspell
         self.autoflake
         self.bind
