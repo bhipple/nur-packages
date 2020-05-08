@@ -504,7 +504,7 @@ in
   # Build a spacemacs with the pinned overlay import
   spacemacs = self.emacsWithPackagesFromUsePackage {
     config = "";
-    package = self.emacsGit;
+    package = self.gccemacs;
     extraEmacsPackages = ep: ((myEmacsPkgs ep) ++ myEmacsDeps);
   };
 
