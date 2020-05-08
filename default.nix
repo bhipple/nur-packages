@@ -23,17 +23,6 @@
   ];
 
   gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
-
-  # This technically builds, but it doesn't work yet
-  gccjit = pkgs.callPackage ./pkgs/gccjit/9 {
-    isl = pkgs.isl_0_17;
-    langJit = true;
-    libcCross = null;
-    noSysDirs = true;
-    profiledCompiler = true;
-    threadsCross = null;
-  };
-
   gmpydl = pkgs.callPackage ./pkgs/gmpydl {};
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
 

@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, emacs, emacsGit, jansson, glibc, gccjit }:
+{ stdenv, fetchFromGitHub, emacs, emacsGit, jansson, glibc, libgccjit }:
 
 (emacsGit.override { srcRepo = true; }).overrideAttrs (
   o: rec {
@@ -8,19 +8,19 @@
       owner = "emacs-mirror";
       repo = "emacs";
       # Fetching off the feature/native-comp git branch
-      rev = "4abb8c822ce02cf33712bd2699c5b77a5db49e31";
-      sha256 = "1w1bs358vx47nj7kgbdw5ppdiq78w96abyvl99lfqkbm0xvi41rz";
+      rev = "92dc81f85e1b91db04487ccf1b52c0cd3328dfee";
+      sha256 = "1f22bxwq53hhdjlakmqz66y63vix5ybpnc1pk9fpy18wjh871scq";
     };
+
     patches = [];
 
-    # Our gccjit is not built correctly and can't find crti.o on its own
-    preConfigure = o.preConfigure + ''
-      export LD_LIBRARY_PATH=${glibc}/lib:${gccjit}/lib/gcc/x86_64-unknown-linux-gnu/9.3.0:$LD_LIBRARY_PATH
-    '';
+    # When this is enabled, emacs does native compilation lazily after starting
+    # up, resulting in quicker package builds.
+    makeFlags = [ "NATIVE_FAST_BOOT=1" ];
 
     configureFlags = o.configureFlags ++ [ "--with-nativecomp" ];
 
-    buildInputs = o.buildInputs ++ [ jansson gccjit glibc ];
+    buildInputs = o.buildInputs ++ [ jansson libgccjit glibc ];
 
   }
 )
