@@ -58,6 +58,7 @@ in
         self.direnv
         self.discord
         self.gitAndTools.hub
+        self.gitAndTools.gitFull
         self.gnumake
         self.gnupg
         self.gnutls
