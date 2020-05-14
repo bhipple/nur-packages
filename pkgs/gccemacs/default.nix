@@ -1,27 +1,30 @@
-{ stdenv, lib, fetchFromGitHub, emacs, emacsGit, jansson, glibc, libgccjit }:
+{ stdenv
+, lib
+, emacsGit
+, fetchFromGitHub
+, libgccjit
+}:
 
-(emacsGit.override { srcRepo = true; }).overrideAttrs (
-  o: rec {
-    pname = "gccemacs";
-    version = "27";
-    src = fetchFromGitHub {
-      owner = "emacs-mirror";
-      repo = "emacs";
-      # Fetching off the feature/native-comp git branch
-      rev = "92dc81f85e1b91db04487ccf1b52c0cd3328dfee";
-      sha256 = "1f22bxwq53hhdjlakmqz66y63vix5ybpnc1pk9fpy18wjh871scq";
-    };
-    patches = [];
+(emacsGit.override { srcRepo = true; }).overrideAttrs(o: rec {
+  pname = "gccemacs";
+  version = "28";
+  src = fetchFromGitHub {
+    owner = "emacs-mirror";
+    repo = "emacs";
+    # Fetching off the feature/native-comp git branch
+    rev = "bc50c0c57eca22cb290465ae5df93d48326eeb05";
+    sha256 = "09f21y42qcp08byq5nvfndsrw71z7sjrrpq3q8hph6m3wx01cysp";
+  };
+  patches = [];
 
-    # When this is enabled, emacs does native compilation lazily after starting
-    # up, resulting in quicker package builds up-front, at the cost of slower
-    # running emacs until everything has been compiled.
-    # makeFlags = [ "NATIVE_FAST_BOOT=1" ];
+  # When this is enabled, emacs does native compilation lazily after starting
+  # up, resulting in quicker package builds up-front, at the cost of slower
+  # running emacs until everything has been compiled.
+  # makeFlags = [ "NATIVE_FAST_BOOT=1" ];
 
-    LIBRARY_PATH = "${lib.getLib stdenv.cc.libc}/lib";
+  LIBRARY_PATH = "${lib.getLib stdenv.cc.libc}/lib";
 
-    configureFlags = o.configureFlags ++ [ "--with-nativecomp" ];
+  configureFlags = o.configureFlags ++ [ "--with-nativecomp" ];
 
-    buildInputs = o.buildInputs ++ [ jansson libgccjit glibc ];
-  }
-)
+  buildInputs = o.buildInputs ++ [ libgccjit ];
+})
