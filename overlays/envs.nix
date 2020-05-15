@@ -88,29 +88,4 @@ in
       ];
     }
   );
-
-  pyEnv = super.lowPrio (
-    self.python3.withPackages (
-      ps: with ps; [
-        isort
-        pep8
-        pyflakes
-        pyls-isort
-        pytest
-        python-language-server
-        yamllint
-        yapf
-      ]
-    )
-  );
-
-  # Use nix-shell -p plaidPy for ledger cred updates
-  plaidPy = super.lowPrio (
-    self.python3.withPackages (
-      ps: with ps; [
-        plaid-python
-        flask
-      ]
-    )
-  );
 }
