@@ -19,23 +19,6 @@ self: super: let
       )
     )
 
-
-    emacsql
-    closql
-    emacsql-sqlite
-    flycheck-elsa
-    forge
-    gh
-    ghub
-    gist
-    github-clone
-    github-search
-    logito
-    marshal
-    names
-    terminal-here
-    tmux-pane
-
     # Marked as broken
     # company-rtags
     # flycheck-rtags
@@ -44,6 +27,7 @@ self: super: let
     # Not packaged
     # evil-unimpaired
     # hybrid-mode
+    # postframe
 
     # Disable until we bump to a version w/ https://github.com/immerrr/lua-mode/pull/166 fixed
     # lua-mode
@@ -51,8 +35,6 @@ self: super: let
 
     # The owner deleted this off of their github!
     # company-tern
-
-    ep.elpaPackages.xclip
 
     ac-ispell
     ace-jump-helm-line
@@ -88,6 +70,7 @@ self: super: let
     chruby
     clang-format
     clean-aindent-mode
+    closql
     cmm-mode
     column-enforce-mode
     company
@@ -136,6 +119,7 @@ self: super: let
     dockerfile-mode
     doom-modeline
     dotenv-mode
+    dumb-jump
     eclim
     editorconfig
     eldoc-eval
@@ -144,10 +128,14 @@ self: super: let
     elfeed-org
     elfeed-web
     elisp-slime-nav
+    emacsql
+    emacsql-sqlite
     emmet-mode
     emms
+    emr
     engine-mode
     ep.csv-mode
+    ep.elpaPackages.xclip
     ep.font-lock-plus
     ep.mmm-mode
     ep.orgPackages.org
@@ -194,6 +182,7 @@ self: super: let
     flx-ido
     flycheck
     flycheck-bashate
+    flycheck-elsa
     flycheck-haskell
     flycheck-ledger
     flycheck-package
@@ -201,12 +190,16 @@ self: super: let
     flycheck-rust
     flyspell-correct
     flyspell-correct-helm
+    forge
     fringe-helper
     fuzzy
     gcmh
     ggtags
+    gh
     gh-md
     ghc
+    ghub
+    gist
     git-commit
     git-gutter
     git-gutter-fringe
@@ -217,6 +210,8 @@ self: super: let
     git-timemachine
     gitattributes-mode
     gitconfig-mode
+    github-clone
+    github-search
     gitignore-mode
     gitignore-templates
     gntp
@@ -305,9 +300,11 @@ self: super: let
     lcr
     ledger-mode
     link-hint
+    list-utils
     live-py-mode
     livid-mode
     log4e
+    logito
     lorem-ipsum
     lsp-haskell
     lsp-java
@@ -324,6 +321,7 @@ self: super: let
     markdown-mode
     markdown-toc
     markup-faces
+    marshal
     maven-test-mode
     meghanada
     memoize
@@ -335,6 +333,7 @@ self: super: let
     mvn
     mwim
     nameless
+    names
     nginx-mode
     nix-mode
     nix-update
@@ -439,8 +438,10 @@ self: super: let
     systemd
     tablist
     tagedit
+    terminal-here
     tern
     terraform-mode
+    tmux-pane
     toc-org
     toml-mode
     treemacs
