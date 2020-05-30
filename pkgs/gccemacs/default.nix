@@ -12,15 +12,18 @@
     src = fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
-      # Fetching off the feature/native-comp git branch
-      rev = "bc50c0c57eca22cb290465ae5df93d48326eeb05";
-      sha256 = "09f21y42qcp08byq5nvfndsrw71z7sjrrpq3q8hph6m3wx01cysp";
+      # Fetching off the feature/native-comp git branch here:
+      # https://github.com/emacs-mirror/emacs/commits/feature/native-comp
+      rev = "eeebbd5fcbdf2827689311b3751437670bfc2e22";
+      sha256 = "056ywm93v4wdk639nj41c9c6rfk21jp69k9ld6rzjjlygvb8lv1b";
     };
     patches = [];
 
     # When this is enabled, emacs does native compilation lazily after starting
     # up, resulting in quicker package builds up-front, at the cost of slower
-    # running emacs until everything has been compiled.
+    # running emacs until everything has been compiled. Since the elpa files in
+    # the nix store are read-only and we have binary caches, we prefer the
+    # longer AOT compilation instead of this flag.
     # makeFlags = [ "NATIVE_FAST_BOOT=1" ];
 
     LIBRARY_PATH = "${lib.getLib stdenv.cc.libc}/lib";
