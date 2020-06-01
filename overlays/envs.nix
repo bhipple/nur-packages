@@ -35,6 +35,7 @@ in
         self.unzip
         self.vim_configurable
         self.wget
+        self.xmodmap
         self.xterm
         self.zsh
       ];
