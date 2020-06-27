@@ -58,8 +58,8 @@ in
         self.dasht
         self.direnv
         self.discord
-        self.gitAndTools.hub
         self.gitAndTools.gitFull
+        self.gitAndTools.hub
         self.gnumake
         self.gnupg
         self.gnutls
@@ -74,6 +74,8 @@ in
         self.nixpkgs-fmt
         self.nixpkgs-review
         self.nload
+        self.nofify-send
+        self.notify-osd
         self.pandoc
         self.pdsh
         self.remmina
