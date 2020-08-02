@@ -24,6 +24,7 @@ in
         self.par
         self.pass
         self.pinentry
+        self.python3
         self.ripgrep
         self.rlwrap
         self.tmux
