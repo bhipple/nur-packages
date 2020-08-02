@@ -21,7 +21,6 @@
     ./overlays/spacemacs.nix
   ];
 
-  gccemacs = pkgs.callPackage ./pkgs/gccemacs {};
   gmpydl = pkgs.callPackage ./pkgs/gmpydl {};
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
 
