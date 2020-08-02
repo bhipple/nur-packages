@@ -79,7 +79,6 @@ in
         self.pandoc
         self.pdsh
         self.remmina
-        self.selected-hies # Haskell IDE tools
         self.shellcheck
         self.source-code-pro
         self.truecrypt

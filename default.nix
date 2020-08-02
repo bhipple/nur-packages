@@ -17,7 +17,6 @@
     ./overlays/bhipple-nur-overlay.nix
     ./overlays/emacs-overlay.nix
     ./overlays/envs.nix
-    ./overlays/hie.nix
     ./overlays/mkl.nix
     ./overlays/spacemacs.nix
   ];
