@@ -58,6 +58,7 @@ in
         self.dasht
         self.direnv
         self.discord
+        self.dunst
         self.gitAndTools.gitFull
         self.gitAndTools.hub
         self.gnumake
@@ -75,7 +76,6 @@ in
         self.nixpkgs-review
         self.nload
         self.nofify-send
-        self.notify-osd
         self.pandoc
         self.pdsh
         self.remmina

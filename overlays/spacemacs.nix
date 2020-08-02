@@ -26,6 +26,8 @@ self: super: let
 
     # Not packaged
     # evil-unimpaired
+    # git-gutter-plus
+    # git-gutter-fringe-plus
     # hybrid-mode
     # postframe
 
@@ -203,8 +205,6 @@ self: super: let
     git-commit
     git-gutter
     git-gutter-fringe
-    git-gutter-fringe-plus
-    git-gutter-plus
     git-link
     git-messenger
     git-timemachine
