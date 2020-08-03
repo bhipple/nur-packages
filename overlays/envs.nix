@@ -83,6 +83,7 @@ in
         self.source-code-pro
         self.truecrypt
         self.vlc
+        self.wally-cli
         self.xclip
         self.xsel
         self.youtube-dl
