@@ -63,7 +63,7 @@ in
         self.bind
         self.cachix
         self.chromium
-        self.cmake
+        self.clang-tools
         self.dasht
         self.direnv
         self.discord
@@ -84,7 +84,6 @@ in
         self.nixpkgs-fmt
         self.nixpkgs-review
         self.nload
-        self.pandoc
         self.pavucontrol
         self.pdsh
         self.remmina
