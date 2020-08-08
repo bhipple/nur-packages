@@ -38,6 +38,7 @@ in
         self.wget
         self.xorg.xmodmap
         self.xterm
+        self.zoxide
         self.zsh
       ];
     }
