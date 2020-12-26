@@ -90,6 +90,7 @@ in
         self.nixpkgs-fmt
         self.nixpkgs-review
         self.nload
+        self.nodePackages.vscode-json-languageserver
         self.pavucontrol
         self.pdsh
         self.remmina
