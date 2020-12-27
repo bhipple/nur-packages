@@ -1,5 +1,5 @@
-self: super: let
-
+self: super:
+let
   myEmacsPkgs = ep: with ep.melpaPackages; [
     # There's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
@@ -7,7 +7,7 @@ self: super: let
     (
       ep.evil-escape.overrideAttrs (
         o: {
-          patches = (o.patches or []) ++ [
+          patches = (o.patches or [ ]) ++ [
             (
               super.fetchpatch {
                 url = https://github.com/BrianHicks/evil-escape/commit/b548e8450570a0c8dea47b47221b728c047a9baf.patch;

@@ -1,6 +1,7 @@
-self: super: let
+self: super:
+let
 
-  brh-python = self.python3.withPackages(ps: with ps; [
+  brh-python = self.python3.withPackages (ps: with ps; [
     pyflakes
     # pyls-isort
     # python-language-server
