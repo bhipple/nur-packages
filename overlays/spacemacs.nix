@@ -103,6 +103,7 @@ self: super: let
     devdocs
     diff-hl
     diminish
+    dired-quick-sort
     direnv
     disaster
     docker
@@ -145,6 +146,7 @@ self: super: let
     evil-anzu
     evil-args
     evil-cleverparens
+    evil-easymotion
     evil-ediff
     evil-exchange
     evil-goggles
@@ -222,6 +224,7 @@ self: super: let
     goto-chg
     gradle-mode
     graphviz-dot-mode
+    grip-mode
     groovy-imports
     groovy-mode
     gruvbox-theme
