@@ -74,7 +74,6 @@ let
     company-cabal
     company-emacs-eclim
     company-go
-    company-lsp
     company-lua
     company-nixos-options
     company-php
@@ -354,7 +353,6 @@ let
     org-pomodoro
     org-present
     org-projectile
-    org-re-reveal
     org-rich-yank
     org-super-agenda
     org-superstar
