@@ -100,9 +100,8 @@ in
         self.remmina
         self.shellcheck
         self.source-code-pro
-        self.truecrypt
+        self.talon
         self.vlc
-        self.wally-cli
         self.xclip
         self.xsel
         self.youtube-dl
