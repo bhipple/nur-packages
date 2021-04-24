@@ -23,8 +23,5 @@
 
   gmpydl = pkgs.callPackage ./pkgs/gmpydl {};
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
-
-  # ledger-cli only gets a release every couple years; build the latest commit
-  # off master.
-  # ledger-git = pkgs.callPackage ./pkgs/ledger {};
+  talon = pkgs.callPackage ./pkgs/talon {};
 }
