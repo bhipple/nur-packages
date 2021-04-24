@@ -97,8 +97,6 @@ let
     dactyl-mode
     dante
     dap-mode
-    dash
-    dash-functional
     deferred
     define-word
     devdocs
@@ -237,7 +235,6 @@ let
     helm-company
     helm-core
     helm-css-scss
-    helm-dash
     helm-descbinds
     helm-flx
     helm-git-grep
@@ -486,7 +483,6 @@ let
     # General tools
     self.direnv # For direnv-mode
     self.ripgrep # For helm
-    self.sqlite # For dash-docsets
 
     # C/C++ Tools
     self.clang-tools

@@ -73,7 +73,6 @@ in
         self.cachix
         self.chromium
         self.clang-tools
-        self.dasht
         self.direnv
         self.discord
         self.dunst
