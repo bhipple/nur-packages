@@ -11,6 +11,7 @@
 , libxkbcommon_7
 , makeWrapper
 , pulseaudio
+, qt5
 , sqlite
 , udev
 , xorg
@@ -39,6 +40,7 @@ in stdenv.mkDerivation rec {
     libffi.dev
     libxkbcommon_7
     pulseaudio
+    qt5.wrapQtAppsHook
     sqlite
     stdenv.cc.cc
     stdenv.cc.libc
