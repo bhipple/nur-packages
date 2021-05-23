@@ -21,6 +21,14 @@
 let
 
   # N.B. You have to subscribe on Patreon to get the download link.
+  # The beta-src.nix file contains something that looks like this:
+  /*
+    version = "<redacted>";
+    src = fetchurl {
+      url = "https://talonvoice.com/update/<redacted>/talon-linux-${version}.tar.xz";
+      sha256 = "0000000000000000000000000000000000000000000000000000";
+    };
+  */
   beta = import ./beta-src.nix { inherit fetchurl; };
 
 in stdenv.mkDerivation rec {
