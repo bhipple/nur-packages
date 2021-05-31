@@ -1,5 +1,4 @@
 { stdenv
-, bzip2
 , dbus
 , fetchurl
 , fontconfig
@@ -9,37 +8,36 @@
 , libGL
 , libffi
 , libxkbcommon_7
-, makeWrapper
 , pulseaudio
 , qt5
 , sqlite
 , udev
 , xorg
+, ncurses
 , xz
 , zlib
 }:
 let
 
-  # N.B. You have to subscribe on Patreon to get the download link.
-  # The beta-src.nix file contains something that looks like this:
-  /*
-    version = "<redacted>";
-    src = fetchurl {
-      url = "https://talonvoice.com/update/<redacted>/talon-linux-${version}.tar.xz";
-      sha256 = "0000000000000000000000000000000000000000000000000000";
-    };
-  */
-  beta = import ./beta-src.nix { inherit fetchurl; };
+  # See README.md
+  beta = import ./beta-src.nix;
 
-in stdenv.mkDerivation rec {
+in
+
+stdenv.mkDerivation rec {
   pname = "talon";
-  inherit (beta) src version;
+  inherit (beta) version;
+  src = fetchurl {
+    inherit (beta) url sha256;
+  };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    qt5.wrapQtAppsHook
+  ];
 
   buildInputs = [
-    bzip2
     dbus
+    ncurses
     fontconfig
     freetype
     glib
@@ -48,7 +46,7 @@ in stdenv.mkDerivation rec {
     libffi.dev
     libxkbcommon_7
     pulseaudio
-    qt5.wrapQtAppsHook
+    qt5.qtbase
     sqlite
     stdenv.cc.cc
     stdenv.cc.libc
@@ -59,50 +57,66 @@ in stdenv.mkDerivation rec {
     zlib
   ];
 
-  phases = [ "unpackPhase" "installPhase" ];
+  libPath = "${placeholder "out"}/share/talon/lib:"
+            + "${placeholder "out"}/share/talon/resources/python/lib:"
+            + "${placeholder "out"}/share/talon/resources/pypy/lib:"
+            + "${placeholder "out"}/share/talon/resources/python/lib/python3.9/site-packages/numpy.libs:"
+            + lib.makeLibraryPath buildInputs;
 
-  installPhase =
-    let
-      libPath = lib.makeLibraryPath buildInputs;
-    in
-    ''
-      runHook preInstall
+  pythonPath = "${placeholder "out"}/share/talon/resources/python/lib/python3.9/site-packages";
 
-      # Copy Talon to the Nix store
-      mkdir -p "$out/share/talon"
-      cp --recursive --target-directory=$out/share/talon *
+  qtWrapperArgs = [
+    "--prefix LD_LIBRARY_PATH : ${libPath}"
+    "--prefix PYTHONPATH : ${pythonPath}"
+    "--set LC_NUMERIC C"
+    "--unset PYTHONHOME"
+  ];
 
-      # We don't use this script, so remove it to ensure that it's not run by
-      # accident.
-      rm $out/share/talon/run.sh
+  installPhase = ''
+    runHook preInstall
+  ''
+  # Clean out unused stuff
+  + ''
+    # We don't use this script, so remove it to ensure that it's not run by
+    # accident.
+    rm run.sh
 
-      # Tell talon where to find glibc
-      patchelf \
-        --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-        $out/share/talon/talon
+    # Use the Nix QT and QT plugins rather than the vendored talon ones.
+    rm lib/libQt*
+  ''
+  # Copy Talon to the Nix store and patchelf
+  + ''
+    mkdir -p "$out/share/talon"
+    cp --recursive --target-directory=$out/share/talon *
 
-      # Replicate 'run.sh' and add library path
-      wrapProgram "$out/share/talon/talon" \
-        --unset QT_AUTO_SCREEN_SCALE_FACTOR \
-        --unset QT_SCALE_FACTOR \
-        --set   LC_NUMERIC C \
-        --set   QT_PLUGIN_PATH "$out/share/talon/lib/plugins" \
-        --set   LD_LIBRARY_PATH "$out/share/talon/lib:$out/share/talon/resources/python/lib:$out/share/talon/resources/pypy/lib:${libPath}"
+    # Tell talon where to find glibc
+    patchelf \
+      --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+      --set-rpath $libPath \
+      $out/share/talon/talon
+  ''
+  # Setup a bin dir
+  + ''
+    mkdir -p "$out/bin"
+    ln -s "$out/share/talon/talon" "$out/bin/talon"
+  ''
+  # Add a wrapped talon repl too
+  # FIXME: This does not work due to PYTHONHOME issues?
+  # + ''
+  #   sed 's|^exec .*|exec -a "$0" $out/share/talon/resources/python/bin/python3 "'$out'/share/talon/resources/repl.py"|' \
+  #      "$out/bin/talon" \
+  #      > "$out/bin/repl"
 
-      # The libbz2 derivation in Nix doesn't provide the right .so filename, so
-      # we fake it by adding a link in the lib/ directory
-      (
-        cd "$out/share/talon/lib"
-        ln -s ${bzip2.out}/lib/libbz2.so.1 libbz2.so.1.0
-      )
+  #   chmod +x "$out/bin/repl"
+  # ''
+  + ''
+    runHook postInstall
+  '';
 
-      mkdir -p "$out/bin"
-      ln -s "$out/share/talon/talon" "$out/bin/talon"
-
-      # Add a wrapped talon repl too
-      sed 's|^exec .*|exec -a "$0" python3 "'$out'/share/talon/resources/repl.py"|' "$out/bin/talon" > "$out/bin/repl"
-      chmod +x "$out/bin/repl"
-
-      runHook postInstall
-    '';
+  meta = with lib; {
+    description = "";
+    homepage = "https://talonvoice.com";
+    license = licenses.unfree;  # https://talonvoice.com/EULA.txt
+    maintainer = maintainers.bhipple;
+  };
 }
