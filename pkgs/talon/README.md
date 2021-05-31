@@ -1,9 +1,13 @@
-# Talon Beta Nix Package
+# Talon Beta Nix User Package
 
 This NixPkgs User Repository contains an expression for building the beta
 version of `talonvoice`. This requires a subscription on Patreon:
 
 https://www.patreon.com/lunixbochs
+
+For details on setting up the Nixpkgs User Repository, see
+
+https://github.com/nix-community/NUR/blob/master/README.md
 
 ## beta-src.nix
 
