@@ -20,7 +20,7 @@
 let
 
   # See README.md
-  beta-src = builtins.tryEval import ./beta-src.nix;
+  beta-src = builtins.tryEval (import ./beta-src.nix);
   beta = if beta-src.success then beta-src.value else {
     url = "none";
     version = "none";
