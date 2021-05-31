@@ -22,6 +22,10 @@ let
   beta = import ./beta-src.nix;
 in
 
+assert beta.version != "";
+assert beta.url != "";
+assert beta.sha256 != "";
+
 stdenv.mkDerivation rec {
   pname = "talon";
   inherit (beta) version;
