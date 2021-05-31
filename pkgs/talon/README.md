@@ -1,33 +1,17 @@
 # Talon Beta Nix User Package
 
 This NixPkgs User Repository contains an expression for building `talonvoice`.
-The beta version requires a subscription on Patreon:
 
-https://www.patreon.com/lunixbochs
+## Quick Start
 
-For details on setting up the Nixpkgs User Repository, see
+From a git clone of this repo:
 
-https://github.com/nix-community/NUR/blob/master/README.md
+1. (Optional) Run `./pkgs/talon/talon-src <url>` to fetch the beta version. This
+   requires a Patreon subscription. The `<url>` is the pinned link on the beta
+   slack channel.
 
-## Setup and build without NUR
+2. Run `nix-build -E '(import <nixpkgs> {}).callPackage ./pkgs/talon {}'`
 
-Clone this repo, then run:
-
-```console
-$ nix-build -E '(import <nixpkgs> {}).callPackage ./pkgs/talon {}'
-```
-
-By default this will use the latest public linux version. To use the beta
-version, see the next section.
-
-### beta-src.nix
-
-By default this will use `./src.nix`, which is the public version. If the
-`./beta-src` file exists, it will prefer it instead. Generate that file by
-running `talon-src <url>`, where URL is provided on the private beta slack
-channel.
-
-After computing the release information, this script will install talon.
 
 ## Systemd Unit
 
