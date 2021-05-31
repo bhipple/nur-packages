@@ -21,9 +21,10 @@
 }:
 let
   # See README.md
-  srcs = if builtins.pathExists ./beta-src.nix
-         then import ./beta-src.nix
-         else import ./src.nix;
+  srcs =
+    if builtins.pathExists ./beta-src.nix
+    then import ./beta-src.nix
+    else import ./src.nix;
 in
 
 stdenv.mkDerivation rec {
