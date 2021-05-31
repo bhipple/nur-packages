@@ -21,6 +21,6 @@
     ./overlays/spacemacs.nix
   ];
 
-  plaid2qif = pkgs.callPackage ./pkgs/plaid2qif {};
-  talon = pkgs.callPackage ./pkgs/talon {};
+  plaid2qif = pkgs.callPackage ./pkgs/plaid2qif { };
+  talon = pkgs.callPackage ./pkgs/talon { };
 }
