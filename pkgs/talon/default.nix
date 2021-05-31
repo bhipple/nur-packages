@@ -103,5 +103,6 @@ stdenv.mkDerivation rec {
     homepage = "https://talonvoice.com";
     license = licenses.unfree; # https://talonvoice.com/EULA.txt
     maintainer = maintainers.bhipple;
+    platforms = platforms.linux;
   };
 }
