@@ -18,15 +18,8 @@
 , zlib
 }:
 let
-
   # See README.md
-  beta-src = builtins.tryEval (import ./beta-src.nix);
-  beta = if beta-src.success then beta-src.value else {
-    url = "none";
-    version = "none";
-    src = "none";
-  };
-
+  beta = import ./beta-src.nix;
 in
 
 stdenv.mkDerivation rec {
@@ -63,10 +56,10 @@ stdenv.mkDerivation rec {
   ];
 
   libPath = "${placeholder "out"}/share/talon/lib:"
-            + "${placeholder "out"}/share/talon/resources/python/lib:"
-            + "${placeholder "out"}/share/talon/resources/pypy/lib:"
-            + "${placeholder "out"}/share/talon/resources/python/lib/python3.9/site-packages/numpy.libs:"
-            + lib.makeLibraryPath buildInputs;
+    + "${placeholder "out"}/share/talon/resources/python/lib:"
+    + "${placeholder "out"}/share/talon/resources/pypy/lib:"
+    + "${placeholder "out"}/share/talon/resources/python/lib/python3.9/site-packages/numpy.libs:"
+    + lib.makeLibraryPath buildInputs;
 
   pythonPath = "${placeholder "out"}/share/talon/resources/python/lib/python3.9/site-packages";
 
@@ -121,7 +114,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "";
     homepage = "https://talonvoice.com";
-    license = licenses.unfree;  # https://talonvoice.com/EULA.txt
+    license = licenses.unfree; # https://talonvoice.com/EULA.txt
     maintainer = maintainers.bhipple;
   };
 }
