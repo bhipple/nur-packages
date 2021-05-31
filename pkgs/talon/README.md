@@ -9,9 +9,9 @@ This NixPkgs User Repository contains an expression for building `talonvoice`.
    requires a Patreon subscription. The `<url>` is the pinned link on the beta
    slack channel.
 
-3. Run `nix-build -E '(import <nixpkgs> {}).callPackage ./pkgs/talon {}'`
+3. Build with `nix-build -E '(import <nixpkgs> {}).callPackage ./pkgs/talon {}'`
 
-4. Run `./result/bin/talon`
+From here you can start talon with `./result/bin/talon`
 
 ## Systemd Unit
 This provides a basic `systemd --user` service file for running `talon` with
