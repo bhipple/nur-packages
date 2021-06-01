@@ -44,11 +44,12 @@ stdenv.mkDerivation rec {
     libffi
     libxkbcommon_7
     pulseaudio
-    qt5.qtbase
     sqlite
     stdenv.cc.cc
     stdenv.cc.libc
     udev
+    xorg.libICE
+    xorg.libSM
     xorg.libX11
     xorg.libXrender
     xz
@@ -74,9 +75,6 @@ stdenv.mkDerivation rec {
     # We don't use this script, so remove it to ensure that it's not run by
     # accident.
     rm run.sh
-
-    # Use the Nix QT and QT plugins rather than the vendored talon ones.
-    rm lib/libQt*
   ''
   # Copy Talon to the Nix store and patchelf
   + ''
