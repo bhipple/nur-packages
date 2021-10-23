@@ -5,6 +5,7 @@ let
     beancount
     bokeh
     ipdb
+    ipython
     jupytext
     matplotlib
     notebook
