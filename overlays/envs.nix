@@ -12,6 +12,8 @@ let
     numpy
     pandas
     pyflakes
+    pylint
+    python-language-server
     scipy
     seaborn
     yapf
