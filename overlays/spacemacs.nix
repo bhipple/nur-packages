@@ -46,6 +46,7 @@ let
     all-the-icons
     alsamixer
     anaphora
+    annalist
     ansible
     ansible-doc
     anzu
@@ -90,6 +91,7 @@ let
     company-web
     concurrent
     consult
+    consult-yasnippet
     copy-as-format
     counsel
     counsel-gtags
@@ -114,6 +116,7 @@ let
     dockerfile-mode
     doom-modeline
     dotenv-mode
+    drag-stuff
     dumb-jump
     eclim
     editorconfig
@@ -171,6 +174,7 @@ let
     evil-visualstar
     exec-path-from-shell
     expand-region
+    eyebrowse
     f
     fancy-battery
     fill-column-indicator
@@ -294,6 +298,7 @@ let
     minitest
     mmm-jinja2
     move-text
+    multi-line
     multi-term
     multiple-cursors
     mvn
@@ -309,6 +314,7 @@ let
     ob-http
     ob-restclient
     open-junk-file
+    orderless
     org-bookmark-heading
     org-brain
     org-bullets
@@ -361,6 +367,7 @@ let
     projectile
     pug-mode
     py-isort
+    pydoc
     pyenv-mode
     pytest
     pythonic

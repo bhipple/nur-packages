@@ -1,6 +1,6 @@
 let
-  rev = "cb54bfe99cdc0eeefbba60418690c4f42b790105";  # updated 2021-10-31
-  sha256 = "0k5rfpxq38ijfsxap9cr95svslqnzhy0gzav58wcaqdl5m75m43p";
+  rev = "bd4015e47bec7c53977f7db377d204dcb593c43d";  # updated 2021-11-07
+  sha256 = "10nvdrzplpwqwa4z5c5kg2a6rwpna1x238sas2apdr4snvn7nf2l";
   emacs-overlay = import (
     builtins.fetchTarball {
       url = "https://github.com/nix-community/emacs-overlay/archive/${rev}.tar.gz";
