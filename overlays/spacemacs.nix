@@ -146,8 +146,8 @@ let
     ep.elpaPackages.xclip
     ep.font-lock-plus
     ep.mmm-mode
-    ep.orgPackages.org
-    ep.orgPackages.org-plus-contrib
+    ep.elpaPackages.org
+    ep.nongnuPackages.org-contrib
     ep.rtags
     ep.sql-indent
     ep.undo-tree
