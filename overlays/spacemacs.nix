@@ -19,7 +19,7 @@ let
       )
     )
 
-    # Not packaged
+    # Not packaged (fill in gaps with use-package)
     # company-ghc
     # company-ghci
     # evil-unimpaired
@@ -31,7 +31,7 @@ let
     # vertico
     # vertico-repeat
 
-    # Packaged, but has some build issue not worth resolving (fill in gaps with use-package)
+    # Packaged, but has some build issue not worth resolving
     # dap-mode              ; bad hash on dependency bui-mode
     # dired-quick-sort      ; can't mirror gitlab commit
     # emr                   ; transitive dep on paredit
@@ -470,30 +470,19 @@ let
     self.autoflake
     self.python3Packages.pyflakes
 
-    # Rust Tools
-    self.cargo
-    self.rustc
-    self.rustfmt
-
     # LSP Tools
     self.nodePackages.bash-language-server
-    self.nodePackages.pyright
     self.nodePackages.vscode-json-languageserver
   ];
 
-  # Build a spacemacs with the pinned overlay import, using the passed emacs
-  mkSpacemacs = package:
-    self.emacsWithPackagesFromUsePackage {
-      config = "";
-      inherit package;
-      extraEmacsPackages = ep: ((myEmacsPkgs ep) ++ myEmacsDeps);
-    };
-
-  spacemacsGcc = mkSpacemacs self.emacsGcc;
-  spacemacsGit = mkSpacemacs self.emacsGit;
-  spacemacs = spacemacsGcc;
+  # Build a spacemacs with the pinned overlay import
+  spacemacs = self.emacsWithPackagesFromUsePackage {
+    config = "";
+    package = self.emacsPgtkGcc;
+    extraEmacsPackages = ep: ((myEmacsPkgs ep) ++ myEmacsDeps);
+  };
 
 in
 {
-  inherit spacemacsGcc spacemacsGit spacemacs;
+  inherit spacemacs;
 }
