@@ -3,20 +3,21 @@
 , lib
 , requireFile
 , makeWrapper
+, alacritty
 , bzip2
 , dbus
 , fontconfig
 , freetype
 , glib
 , libGL
+, libpulseaudio
 , libxkbcommon_7
+, openssl
 , sqlite
 , udev
 , xorg
 , xz
 , zlib
-, libpulseaudio
-, alacritty
 }:
 let
   # See README.md
@@ -35,25 +36,26 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [
     # qt5.wrapQtAppsHook
-    stdenv.cc.cc
-    stdenv.cc.libc
     bzip2
     dbus
     fontconfig
     freetype
     glib
     libGL
+    libpulseaudio
     libxkbcommon_7
+    openssl
     sqlite
+    stdenv.cc.cc
+    stdenv.cc.libc
     udev
-    xorg.libX11
-    xorg.libSM
     xorg.libICE
+    xorg.libSM
+    xorg.libX11
     xorg.libXrender
     xorg.libxcb
     xz
     zlib
-    libpulseaudio
   ];
   phases = [ "unpackPhase" "installPhase" ];
   installPhase = let
