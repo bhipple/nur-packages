@@ -4,5 +4,5 @@ set -euo pipefail
 export TERM=xterm-256color
 export NIXPKGS_ALLOW_UNFREE=1
 
-channel='https://github.com/NixOS/nixpkgs/archive/cc244a8ef1a6b116e5254d838fdf28a37c370b48.tar.gz'  # 2022-02-20 from NixOS release-21.11
+channel='https://github.com/NixOS/nixpkgs/archive/491ad20776074706da6befe0cb8334f2df23fc00.tar.gz'  # 2022-02-21 from NixOS release-21.11
 nix run -f $channel talon -c talon
