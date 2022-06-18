@@ -68,7 +68,7 @@ in
       name = "bigEnv";
       paths = [
         self.alsaUtils
-        self.anki
+        self.anki-bin
         self.aspell
         self.autoflake
         self.bind
