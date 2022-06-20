@@ -100,6 +100,7 @@ in
         self.pdsh
         self.remmina
         self.shellcheck
+        self.signal-desktop
         self.source-code-pro
         self.vlc
         self.xclip

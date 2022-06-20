@@ -14,6 +14,7 @@ python3Packages.buildPythonApplication rec {
     docopt
     plaid-python
     python-dateutil
+    python-dotenv
     setuptools
   ];
 
