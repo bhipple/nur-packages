@@ -80,6 +80,7 @@ in
         self.dunst
         self.gitAndTools.gitFull
         self.gitAndTools.hub
+        self.gnome.gnome-keyring
         self.gnumake
         self.gnupg
         self.gnutls
