@@ -26,10 +26,12 @@ let
     # ghc
     # git-gutter-fringe-plus
     # git-gutter-plus
+    # holy-mode
     # hybrid-mode
     # intero
     # vertico
     # vertico-repeat
+    # vim-powerline
 
     # Packaged, but has some build issue not worth resolving
     # dap-mode              ; bad hash on dependency bui-mode
@@ -332,6 +334,9 @@ let
     org-projectile
     org-rich-yank
     org-roam
+    org-roam-ui
+    shfmt
+    posframe
     org-super-agenda
     org-superstar
     orgit

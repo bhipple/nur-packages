@@ -3,7 +3,6 @@ let
 
   brh-python = self.python3.withPackages (ps: with ps; [
     beancount
-    bokeh
     ipdb
     ipython
     jupytext
@@ -67,7 +66,7 @@ in
     super.buildEnv {
       name = "bigEnv";
       paths = [
-        self.alsaUtils
+        self.alsa-utils
         self.anki-bin
         self.aspell
         self.autoflake
