@@ -104,7 +104,6 @@ in
         self.signal-desktop
         self.source-code-pro
         self.vlc
-        self.vscode
         self.xclip
         self.xsel
         self.youtube-dl
