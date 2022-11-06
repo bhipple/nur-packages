@@ -44,6 +44,7 @@ in
         self.pinentry
         self.ripgrep
         self.rlwrap
+        self.sqlite
         self.tmux
         self.tmuxPlugins.copycat
         self.tmuxPlugins.open
@@ -78,6 +79,7 @@ in
         self.direnv
         self.discord
         self.dunst
+        self.gcc
         self.gitAndTools.gitFull
         self.gitAndTools.hub
         self.gnome.gnome-keyring
