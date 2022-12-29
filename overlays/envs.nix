@@ -30,11 +30,13 @@ in
         self.bc
         self.coreutils
         self.curl
+        self.delta
         self.fd
         self.feh
         self.file
         self.fzf
         self.git-crypt
+        self.gitui
         self.gnused
         self.gnutar
         self.htop

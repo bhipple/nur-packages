@@ -4,7 +4,7 @@ python3Packages.buildPythonApplication rec {
   pname = "plaid2qif";
   version = "unstable";
 
-  src = /home/bhipple/src/plaid2qif;
+  src = /home/bhipple/git/plaid2qif;
   # src = python3Packages.fetchPypi {
   #   inherit pname version;
   #   sha256 = "07f76bhhlj4zdv68i4nk1pvx745r9i6qgzkwv029d97djw4mj9gf";
