@@ -40,6 +40,7 @@ in
         self.gnused
         self.gnutar
         self.htop
+        self.hwinfo
         self.jq
         self.par
         self.pass
