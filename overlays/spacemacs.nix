@@ -21,7 +21,13 @@ let
     self.nodePackages.vscode-json-languageserver
   ];
 
-  spacemacs = self.emacs.pkgs.withPackages (epkgs: myEmacsDeps);
+  # Build a spacemacs with the pinned overlay import
+  spacemacs = self.emacsWithPackagesFromUsePackage {
+    config = "";
+    package = self.emacsPgtkNativeComp;
+    extraEmacsPackages = _: myEmacsDeps;
+  };
+
 in
 {
   inherit spacemacs;
