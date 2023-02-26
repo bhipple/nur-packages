@@ -24,7 +24,7 @@ let
   # Build a spacemacs with the pinned overlay import
   spacemacs = self.emacsWithPackagesFromUsePackage {
     config = "";
-    package = self.emacsPgtkNativeComp;
+    package = self.emacsUnstable;
     extraEmacsPackages = _: myEmacsDeps;
   };
 
