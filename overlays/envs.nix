@@ -61,7 +61,6 @@ in
         self.tmuxPlugins.yank
         self.tree
         self.unzip
-        self.vim_configurable
         self.wget
         self.xorg.xmodmap
         self.xterm
