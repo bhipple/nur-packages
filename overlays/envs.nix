@@ -47,6 +47,7 @@ in
         self.htop
         self.hwinfo
         self.jq
+        self.neovim
         self.par
         self.pass
         self.pinentry
