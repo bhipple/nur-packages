@@ -8,17 +8,6 @@ let
     # General tools
     self.direnv # For direnv-mode
     self.ripgrep # For vertico
-
-    # C/C++ Tools
-    self.clang-tools
-
-    # Python Tools
-    self.autoflake
-    self.python3Packages.pyflakes
-
-    # LSP Tools
-    self.nodePackages.bash-language-server
-    self.nodePackages.vscode-json-languageserver
   ];
 
   # Build a spacemacs with the pinned overlay import

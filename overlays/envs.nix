@@ -35,7 +35,6 @@ in
         self.bc
         self.coreutils
         self.curl
-        self.delta
         self.fd
         self.feh
         self.file
