@@ -12,6 +12,7 @@ let
     pandas
     pyflakes
     pylint
+    python-lsp-server
     scipy
     seaborn
     yapf
