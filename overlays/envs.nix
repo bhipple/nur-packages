@@ -107,6 +107,7 @@ in
         self.nodePackages.bash-language-server
         self.nodePackages.pyright
         self.nodePackages.vscode-json-languageserver
+        self.nodejs
         self.pavucontrol
         self.pdsh
         self.remmina
