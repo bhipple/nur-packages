@@ -101,6 +101,7 @@ in
         self.libnotify # for nofify-send
         self.mupdf
         self.nixopsUnstable
+        self.nixos-option
         self.nixpkgs-fmt
         self.nixpkgs-review
         self.nload
