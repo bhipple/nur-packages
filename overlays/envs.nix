@@ -143,6 +143,7 @@ in
         self.remmina
         self.shellcheck
         self.signal-desktop
+        self.snixembed
         self.source-code-pro
         self.vlc
         self.xclip

@@ -14,6 +14,7 @@
 , libxkbcommon_7
 , openssl
 , rustc
+, snixembed
 , sqlite
 , udev
 , xorg
@@ -46,6 +47,7 @@ stdenv.mkDerivation rec {
     libxkbcommon_7
     openssl
     rustc
+    snixembed
     sqlite
     stdenv.cc.cc
     stdenv.cc.libc
