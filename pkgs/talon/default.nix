@@ -13,6 +13,7 @@
 , libpulseaudio
 , libxkbcommon_7
 , openssl
+, rustc
 , sqlite
 , udev
 , xorg
@@ -35,7 +36,6 @@ stdenv.mkDerivation rec {
   preferLocalBuild = true;
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [
-    # qt5.wrapQtAppsHook
     bzip2
     dbus
     fontconfig
@@ -45,6 +45,7 @@ stdenv.mkDerivation rec {
     libpulseaudio
     libxkbcommon_7
     openssl
+    rustc
     sqlite
     stdenv.cc.cc
     stdenv.cc.libc
@@ -52,6 +53,9 @@ stdenv.mkDerivation rec {
     xorg.libICE
     xorg.libSM
     xorg.libX11
+    xorg.libXcursor
+    xorg.libXi
+    xorg.libXrandr
     xorg.libXrender
     xorg.libxcb
     xz
@@ -92,7 +96,7 @@ stdenv.mkDerivation rec {
 
     mkdir $out/bin
     (
-      cd $out/bin && ln -s ../talon talon
+      cd $out/bin && ln -s ../talon
     )
 
     runHook postInstall
