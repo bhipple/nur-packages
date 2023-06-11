@@ -2,6 +2,7 @@ self: super:
 let
   brh-python = self.python3.withPackages (ps: with ps; [
     beancount
+    duckduckgo-search  # for course.fast.ai
     fastai
     ipdb
     ipython
