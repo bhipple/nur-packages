@@ -152,6 +152,7 @@ in
         self.xsel
         self.youtube-dl
         self.zlib
+        self.zoom-us
       ];
     }
   );
