@@ -142,6 +142,7 @@ in
         self.nodejs
         self.pavucontrol
         self.pdsh
+        self.realvnc-vnc-viewer
         self.remmina
         self.shellcheck
         self.signal-desktop
