@@ -13,8 +13,7 @@ let
   # Build a spacemacs with the pinned overlay import
   spacemacs = self.emacsWithPackagesFromUsePackage {
     config = "";
-    #package = self.emacsUnstable;
-    package = self.emacsGit;
+    package = self.emacs-git;
     extraEmacsPackages = _: myEmacsDeps;
   };
 
