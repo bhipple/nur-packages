@@ -2,7 +2,7 @@ self: super:
 let
   brh-python = self.python3.withPackages (ps: with ps; [
     beancount
-    duckduckgo-search  # for course.fast.ai
+    duckduckgo-search # for course.fast.ai
     fastai
     ipdb
     ipython
@@ -22,17 +22,27 @@ let
 in
 {
 
+  neovim = super.neovim.override {
+    configure = {
+      packages.myPlugins = with super.vimPlugins; {
+        start = [
+          nvim-treesitter.withAllGrammars
+        ];
+      };
+    };
+  };
+
   # FIXME: The newer version of ledger has floating point balance issues?
   # If this ever stops working, just pull it from the NixOS 21.05 channel.
-  ledger = (super.ledger.override { usePython = true; }).overrideAttrs(_: rec {
+  ledger = (super.ledger.override { usePython = true; }).overrideAttrs (_: rec {
     pname = "ledger";
     version = "3.2.1";
 
     src = super.fetchFromGitHub {
-      owner  = "ledger";
-      repo   = "ledger";
-      rev    = "v${version}";
-      hash   = "sha256-xp1MGDQPi0/OCo64yJXjyaEpv0eL28rpX5/zoTXv0nQ";
+      owner = "ledger";
+      repo = "ledger";
+      rev = "v${version}";
+      hash = "sha256-xp1MGDQPi0/OCo64yJXjyaEpv0eL28rpX5/zoTXv0nQ";
     };
 
     patches = [
@@ -63,6 +73,7 @@ in
       name = "minEnv";
       paths = [
         brh-python
+        self.neovim
         self.bat
         self.bc
         self.coreutils
@@ -78,7 +89,6 @@ in
         self.htop
         self.hwinfo
         self.jq
-        self.neovim
         self.par
         self.pass
         self.pinentry
