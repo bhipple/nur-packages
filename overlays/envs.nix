@@ -122,7 +122,6 @@ in
         self.autoflake
         self.bind
         self.cachix
-        self.chromium
         self.clang-tools
         self.direnv
         self.discord
