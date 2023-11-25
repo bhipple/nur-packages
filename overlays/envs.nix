@@ -121,7 +121,6 @@ in
         self.aspell
         self.autoflake
         self.bind
-        self.brave
         self.cachix
         self.chromium
         self.clang-tools
