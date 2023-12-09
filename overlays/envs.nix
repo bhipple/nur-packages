@@ -126,6 +126,7 @@ in
         self.direnv
         self.discord
         self.dunst
+        self.emacs29
         self.gcc
         self.gitAndTools.gitFull
         self.gitAndTools.hub

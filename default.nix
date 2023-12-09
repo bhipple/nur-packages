@@ -15,10 +15,8 @@
   overlays = map import [
     ./overlays/ami.nix
     ./overlays/bhipple-nur-overlay.nix
-    ./overlays/emacs-overlay.nix
     ./overlays/envs.nix
     ./overlays/mkl.nix
-    ./overlays/spacemacs.nix
   ];
 
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif { };
