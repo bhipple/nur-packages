@@ -62,6 +62,11 @@ in
     ];
   });
 
+  # Workaround for https://github.com/NixOS/nixpkgs/issues/203976
+  freerdp = super.freerdp.override {
+    openssl = self.openssl_1_1;
+  };
+
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (
     super.buildEnv {
