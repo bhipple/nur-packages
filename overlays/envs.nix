@@ -79,13 +79,11 @@ in
         self.fzf
         self.git-crypt
         self.gitui
-        self.gnused
         self.gnutar
         self.htop
         self.hwinfo
         self.jq
         self.par
-        self.pass
         self.pinentry
         self.ripgrep
         self.rlwrap
