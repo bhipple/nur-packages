@@ -84,6 +84,7 @@ in
         self.hwinfo
         self.jq
         self.par
+        self.pass
         self.pinentry
         self.ripgrep
         self.rlwrap
