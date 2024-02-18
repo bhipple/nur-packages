@@ -19,18 +19,16 @@ let
     yapf
   ]);
 
-in
-{
-
-  neovim = super.neovim.override {
+  brh-neovim = self.neovim.override {
     configure = {
-      packages.myPlugins = with super.vimPlugins; {
-        start = [
-          nvim-treesitter.withAllGrammars
-        ];
+      packages.myPlugins = {
+        start = [ self.vimPlugins.nvim-treesitter.withAllGrammars ];
       };
     };
   };
+
+in
+{
 
   # FIXME: The newer version of ledger has floating point balance issues?
   # If this ever stops working, just pull it from the NixOS 21.05 channel.
@@ -72,8 +70,8 @@ in
     super.buildEnv {
       name = "minEnv";
       paths = [
+        brh-neovim
         brh-python
-        self.neovim
         self.bat
         self.bc
         self.coreutils
