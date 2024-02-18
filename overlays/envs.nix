@@ -84,7 +84,6 @@ in
         self.fzf
         self.git-crypt
         self.gitui
-        self.gnused
         self.gnutar
         self.htop
         self.hwinfo
