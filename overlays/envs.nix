@@ -60,11 +60,6 @@ in
     ];
   });
 
-  # Workaround for https://github.com/NixOS/nixpkgs/issues/203976
-  freerdp = super.freerdp.override {
-    openssl = self.openssl_1_1;
-  };
-
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (
     super.buildEnv {
@@ -118,7 +113,6 @@ in
         self.aspell
         self.autoflake
         self.bind
-        self.cachix
         self.clang-tools
         self.direnv
         self.discord
@@ -154,10 +148,10 @@ in
         self.signal-desktop
         self.snixembed
         self.source-code-pro
+        self.sshfs
         self.vlc
         self.xclip
         self.xsel
-        self.youtube-dl
         self.zlib
         self.zoom-us
       ];
