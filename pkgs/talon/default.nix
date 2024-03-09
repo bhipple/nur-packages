@@ -11,7 +11,7 @@
 , glib
 , libGL
 , libpulseaudio
-, libxkbcommon_7
+, libxkbcommon
 , openssl
 , rustc
 , snixembed
@@ -44,7 +44,7 @@ stdenv.mkDerivation rec {
     glib
     libGL
     libpulseaudio
-    libxkbcommon_7
+    libxkbcommon
     openssl
     rustc
     snixembed
