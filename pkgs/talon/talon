@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+pgrep talon && exit 0
+
 export TERM=xterm-256color
 export NIXPKGS_ALLOW_UNFREE=1
 
