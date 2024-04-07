@@ -19,6 +19,7 @@
     ./overlays/mkl.nix
   ];
 
+  boardspace = pkgs.callPackage ./pkgs/boardspace { };
   plaid2qif = pkgs.callPackage ./pkgs/plaid2qif { };
   talon = pkgs.callPackage ./pkgs/talon { };
 }
