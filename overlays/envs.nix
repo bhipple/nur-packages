@@ -114,6 +114,7 @@ in
         self.aspell
         self.autoflake
         self.bind
+        self.boardspace
         self.clang-tools
         self.direnv
         self.discord
