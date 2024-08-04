@@ -25,6 +25,15 @@ let
     };
   };
 
+  lsp-tools = [
+    self.clang-tools
+    self.lua-language-server
+    self.nodePackages.bash-language-server
+    self.nodePackages.pyright
+    self.nodePackages.vscode-json-languageserver
+    self.yaml-language-server
+  ];
+
 in
 {
 
@@ -109,13 +118,12 @@ in
   bigEnv = super.hiPrio (
     super.buildEnv {
       name = "bigEnv";
-      paths = [
+      paths = lsp-tools ++ [
         self.alsa-utils
         self.anki-bin
         self.aspell
         self.autoflake
         self.bind
-        self.clang-tools
         self.direnv
         self.discord
         self.dunst
@@ -132,15 +140,11 @@ in
         self.imagemagick
         self.ledger
         self.libnotify # for nofify-send
-        self.lua-language-server
         self.mupdf
         self.nixos-option
         self.nixpkgs-fmt
         self.nixpkgs-review
         self.nload
-        self.nodePackages.bash-language-server
-        self.nodePackages.pyright
-        self.nodePackages.vscode-json-languageserver
         self.nodejs
         self.ollama
         self.pavucontrol
