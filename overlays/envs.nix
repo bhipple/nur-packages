@@ -1,5 +1,14 @@
 self: super:
 let
+
+  master-src = self.fetchFromGitHub {
+    owner = "NixOS";
+    repo = "nixpkgs";
+    rev = "256df38eef15a7128f13a7d83e496d02ffa263c3";
+    hash = "sha256-73Wt0y1Dn4b73lFSBPOJWCaRU2Njx6lUk1PNeD7b/pc=";
+  };
+  nixpkgs-master = import "${master-src}/default.nix" {};
+
   brh-python = self.python3.withPackages (ps: with ps; [
     ipdb
     ipython
@@ -29,9 +38,12 @@ let
     self.clang-tools
     self.lua-language-server
     self.nodePackages.bash-language-server
-    self.nodePackages.pyright
     self.nodePackages.vscode-json-languageserver
     self.yaml-language-server
+
+    self.nodePackages.pyright
+    nixpkgs-master.ruff
+    self.ruff-lsp
   ];
 
 in
