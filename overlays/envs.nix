@@ -115,7 +115,6 @@ in
         self.aspell
         self.autoflake
         self.bind
-        #self.boardspace
         self.clang-tools
         self.direnv
         self.discord
@@ -133,6 +132,7 @@ in
         self.imagemagick
         self.ledger
         self.libnotify # for nofify-send
+        self.lua-language-server
         self.mupdf
         self.nixos-option
         self.nixpkgs-fmt
