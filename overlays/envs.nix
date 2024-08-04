@@ -43,7 +43,6 @@ let
 
     self.nodePackages.pyright
     nixpkgs-master.ruff
-    self.ruff-lsp
   ];
 
 in
