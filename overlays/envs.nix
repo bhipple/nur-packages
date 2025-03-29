@@ -95,6 +95,7 @@ in
         self.hwinfo
         self.jq
         self.killall # used by i3
+        self.nerdfonts
         self.par
         self.pass
         self.pinentry
@@ -163,7 +164,6 @@ in
         self.shellcheck
         self.signal-desktop
         self.snixembed
-        self.source-code-pro
         self.sshfs
         self.vlc
         self.xclip
