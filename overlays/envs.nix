@@ -78,6 +78,7 @@ in
       paths = [
         brh-neovim
         brh-python
+        self.alacritty
         self.bat
         self.bc
         self.comma
@@ -113,7 +114,6 @@ in
         self.xorg.xev
         self.xorg.xeyes
         self.xorg.xmodmap
-        self.xterm
         self.zellij
         self.zoxide
         self.zsh
