@@ -113,6 +113,7 @@ in
         self.xorg.xeyes
         self.xorg.xmodmap
         self.xterm
+        self.zellij
         self.zoxide
         self.zsh
       ];
