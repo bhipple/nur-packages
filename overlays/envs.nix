@@ -114,7 +114,7 @@ in
         self.xorg.xev
         self.xorg.xeyes
         self.xorg.xmodmap
-        self.zellij
+        #self.zellij
         self.zoxide
         self.zsh
       ];
