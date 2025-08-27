@@ -130,7 +130,6 @@ in
         self.aspell
         self.autoflake
         self.bind
-        self.black
         self.chromedriver
         self.direnv
         self.discord
