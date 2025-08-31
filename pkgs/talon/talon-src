@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+set -euxo pipefail
+
 if [ -z $1 ]; then
     echo "USAGE: talon-src <tar.gz fname>"
     exit 1
