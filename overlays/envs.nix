@@ -139,7 +139,6 @@ in
         self.gcc
         self.gitAndTools.git-lfs
         self.gitAndTools.gitFull
-        self.gitAndTools.hub
         self.gnome-keyring
         self.gnumake
         self.gnutls
