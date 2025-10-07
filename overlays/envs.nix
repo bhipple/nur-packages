@@ -154,6 +154,7 @@ in
         self.nload
         self.nodejs
         self.ollama
+        self.orca-slicer
         self.pavucontrol
         self.pdsh
         self.pulseaudioFull
