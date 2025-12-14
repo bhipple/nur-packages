@@ -72,104 +72,100 @@ in
   });
 
   # Minimal set of packages to install everywhere
-  minEnv = super.hiPrio (
-    super.buildEnv {
-      name = "minEnv";
-      paths = [
-        brh-neovim
-        brh-python
-        self.alacritty
-        self.bat
-        self.bc
-        self.comma
-        self.coreutils
-        self.curl
-        self.fd
-        self.feh
-        self.file
-        self.fzf
-        self.git-crypt
-        self.gitui
-        self.gnutar
-        self.google-chrome
-        self.htop
-        self.hwinfo
-        self.jq
-        self.killall # used by i3
-        self.par
-        self.pass
-        self.pinentry
-        self.ripgrep
-        self.rlwrap
-        self.sqlite
-        self.tmux
-        self.tmuxPlugins.copycat
-        self.tmuxPlugins.open
-        self.tmuxPlugins.sensible
-        self.tmuxPlugins.yank
-        self.tree
-        self.unzip
-        self.wget
-        self.xorg.xev
-        self.xorg.xeyes
-        self.xorg.xmodmap
-        self.zellij
-        self.zoxide
-        self.zsh
-      ] ++ builtins.filter self.lib.attrsets.isDerivation (builtins.attrValues self.nerd-fonts);
-    }
-  );
+  minEnv = super.buildEnv {
+    name = "minEnv";
+    paths = [
+      brh-neovim
+      brh-python
+      self.alacritty
+      self.bat
+      self.bc
+      self.comma
+      self.coreutils
+      self.curl
+      self.fd
+      self.feh
+      self.file
+      self.fzf
+      self.git-crypt
+      self.gitui
+      self.gnutar
+      self.google-chrome
+      self.htop
+      self.hwinfo
+      self.jq
+      self.killall # used by i3
+      self.par
+      self.pass
+      self.pinentry-curses
+      self.ripgrep
+      self.rlwrap
+      self.sqlite
+      self.tmux
+      self.tmuxPlugins.copycat
+      self.tmuxPlugins.open
+      self.tmuxPlugins.sensible
+      self.tmuxPlugins.yank
+      self.tree
+      self.unzip
+      self.wget
+      self.xorg.xev
+      self.xorg.xeyes
+      self.xorg.xmodmap
+      self.zellij
+      self.zoxide
+      self.zsh
+    ] ++ builtins.filter self.lib.attrsets.isDerivation (builtins.attrValues self.nerd-fonts);
+  };
 
   # For "permanent" systems
-  bigEnv = super.hiPrio (
-    super.buildEnv {
-      name = "bigEnv";
-      paths = lsp-tools ++ [
-        self.alsa-utils
-        self.anki-bin
-        self.aspell
-        self.autoflake
-        self.bind
-        self.chromedriver
-        self.direnv
-        self.discord
-        self.dunst
-        self.emacs
-        self.ffmpeg
-        self.gcc
-        self.gitAndTools.git-lfs
-        self.gitAndTools.gitFull
-        self.gnome-keyring
-        self.gnumake
-        self.gnutls
-        self.graphviz
-        self.icu
-        self.imagemagick
-        self.libheif
-        self.libnotify # for nofify-send
-        self.mupdf
-        self.nixos-option
-        self.nixpkgs-fmt
-        self.nixpkgs-review
-        self.nload
-        self.nodejs
-        self.ollama
-        self.orca-slicer
-        self.pavucontrol
-        self.pdsh
-        self.pulseaudioFull
-        self.remmina
-        self.shellcheck
-        self.signal-desktop
-        self.snixembed
-        self.sshfs
-        self.vlc
-        self.xclip
-        self.xdotool
-        self.xsel
-        self.zlib
-        self.zoom-us
-      ];
-    }
-  );
+  bigEnv = super.buildEnv {
+    name = "bigEnv";
+    paths = lsp-tools ++ [
+      self.alsa-utils
+      self.anki-bin
+      self.aspell
+      self.autoflake
+      self.bind
+      self.chromedriver
+      self.direnv
+      self.discord
+      self.dunst
+      self.emacs
+      self.ffmpeg
+      self.gcc
+      self.git-lfs
+      self.git
+      self.gnome-keyring
+      self.gnumake
+      self.gnutls
+      self.graphviz
+      self.icu
+      self.imagemagick
+      self.libheif
+      self.libnotify # for nofify-send
+      self.mupdf
+      self.nixos-option
+      self.nixpkgs-fmt
+      self.nixpkgs-review
+      self.nload
+      self.nodejs
+      self.ollama
+      self.orca-slicer
+      self.pavucontrol
+      self.pdsh
+      self.pulseaudioFull
+      self.remmina
+      self.shellcheck
+      self.signal-desktop
+      self.snixembed
+      self.sshfs
+      self.vlc
+      self.xclip
+      self.xdotool
+      self.xsel
+      self.zlib
+      self.zoom-us
+    ];
+  };
 }
