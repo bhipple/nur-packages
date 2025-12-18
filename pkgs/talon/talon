@@ -8,10 +8,10 @@ export NIXPKGS_ALLOW_UNFREE=1
 
 notify-send "Starting talon..."
 
-channel='https://github.com/NixOS/nixpkgs/archive/a4bad3269f174936355fe298792839834b4c73c9.tar.gz'  # NixOS release-25.05 as of 2025-09-01
+channel='https://github.com/NixOS/nixpkgs/archive/f28f4b4d2d3e83479b82be478ebf31601d54fe4d.tar.gz'  # NixOS release-25.11 as of 2025-12-17
 pgrep snixembed || snixembed &
 
-mkdir -p /tmp/talon && cd /tmp/talon
-nix build -Lvf $channel talon
+rm -f ~/talon
+nix build -Lvf $channel talon --out-link ~/talon
 
-./result/bin/talon
+steam-run ~/talon/talon

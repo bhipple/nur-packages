@@ -23,8 +23,8 @@
 }:
 stdenv.mkDerivation rec {
   pname = "talon";
-  version = "115-0.4.0-981-8751";
-  src = ./talon-linux-115-0.4.0-981-8751.tar.xz;
+  version = "115-0.4.0-1046-ac6a";
+  src = ./talon-linux-115-0.4.0-1046-ac6a.tar.xz;
   preferLocalBuild = true;
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [
