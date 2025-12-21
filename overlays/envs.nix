@@ -127,6 +127,7 @@ in
       self.aspell
       self.autoflake
       self.bind
+      self.bubblewrap
       self.chromedriver
       self.direnv
       self.discord
