@@ -129,6 +129,7 @@ in
       self.bind
       self.bubblewrap
       self.chromedriver
+      self.crush
       self.direnv
       self.discord
       self.dunst
