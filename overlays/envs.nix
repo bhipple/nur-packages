@@ -135,9 +135,10 @@ in
       self.dunst
       self.emacs
       self.ffmpeg
+      self.flameshot
       self.gcc
-      self.git-lfs
       self.git
+      self.git-lfs
       self.gnome-keyring
       self.gnumake
       self.gnutls
