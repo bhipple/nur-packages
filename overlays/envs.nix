@@ -128,6 +128,7 @@ in
       self.autoflake
       self.bind
       self.bubblewrap
+      self.claude-code
       self.chromedriver
       self.crush
       self.direnv
