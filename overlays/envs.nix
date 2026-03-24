@@ -137,6 +137,7 @@ in
       self.emacs
       self.ffmpeg
       self.flameshot
+      self.freerdp
       self.gcc
       self.git
       self.git-lfs
@@ -166,7 +167,6 @@ in
       self.vlc
       self.xclip
       self.xdotool
-      self.xfreerdp
       self.xsel
       self.zlib
       self.zoom-us
