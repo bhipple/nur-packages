@@ -159,7 +159,6 @@ in
       self.pavucontrol
       self.pdsh
       self.pulseaudioFull
-      self.remmina
       self.shellcheck
       self.signal-desktop
       self.snixembed
@@ -167,6 +166,7 @@ in
       self.vlc
       self.xclip
       self.xdotool
+      self.xfreerdp
       self.xsel
       self.zlib
       self.zoom-us
