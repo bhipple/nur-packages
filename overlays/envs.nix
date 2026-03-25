@@ -134,6 +134,7 @@ in
       self.discord
       self.dunst
       self.emacs
+      self.expect
       self.ffmpeg
       self.flameshot
       self.gcc
