@@ -130,14 +130,12 @@ in
       self.bubblewrap
       self.claude-code
       self.chromedriver
-      self.crush
       self.direnv
       self.discord
       self.dunst
       self.emacs
       self.ffmpeg
       self.flameshot
-      self.freerdp
       self.gcc
       self.git
       self.git-lfs
@@ -155,7 +153,6 @@ in
       self.nixpkgs-review
       self.nload
       self.nodejs
-      self.ollama
       self.orca-slicer
       self.pavucontrol
       self.pdsh
