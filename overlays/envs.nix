@@ -29,14 +29,7 @@ let
   };
 
   lsp-tools = [
-    self.clang-tools
-    self.lua-language-server
-    self.nodePackages.bash-language-server
-    self.nodePackages.vscode-json-languageserver
     self.pyright
-    self.yaml-language-server
-
-    self.ruff
   ];
 
 in
