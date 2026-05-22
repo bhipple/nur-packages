@@ -112,6 +112,24 @@ in
     ] ++ builtins.filter self.lib.attrsets.isDerivation (builtins.attrValues self.nerd-fonts);
   };
 
+  # Packages pinned to nixos-24.05 for compatibility
+  legacyEnv = super.buildEnv {
+    name = "legacyEnv";
+    paths = [
+      self.ledger
+    ];
+  };
+
+  # Packages pulled from nixos-unstable
+  unstableEnv = super.buildEnv {
+    name = "unstableEnv";
+    paths = [
+      self.claude-code
+      self.freerdp
+      self.yt-dlp
+    ];
+  };
+
   # For "permanent" systems
   bigEnv = super.buildEnv {
     name = "bigEnv";
