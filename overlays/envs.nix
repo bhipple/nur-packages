@@ -5,6 +5,7 @@ let
     ipdb
     ipython
     jupytext
+    marimo
     matplotlib
     notebook
     numpy
