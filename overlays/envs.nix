@@ -35,36 +35,6 @@ let
 in
 {
 
-  # FIXME: The newer version of ledger has floating point balance issues?
-  # If this ever stops working, just pull it from the NixOS 24.05 channel.
-  ledger = (super.ledger.override { usePython = true; }).overrideAttrs (_: rec {
-    pname = "ledger";
-    version = "3.2.1";
-
-    src = super.fetchFromGitHub {
-      owner = "ledger";
-      repo = "ledger";
-      rev = "v${version}";
-      hash = "sha256-xp1MGDQPi0/OCo64yJXjyaEpv0eL28rpX5/zoTXv0nQ";
-    };
-
-    patches = [
-      # Add support for $XDG_CONFIG_HOME. Remove with the next release
-      (super.fetchpatch {
-        url = "https://github.com/ledger/ledger/commit/c79674649dee7577d6061e3d0776922257520fd0.patch";
-        sha256 = "sha256-vwVQnY9EUCXPzhDJ4PSOmQStb9eF6H0yAOiEmL6sAlk=";
-        excludes = [ "doc/NEWS.md" ];
-      })
-
-      # Fix included bug with boost >= 1.76. Remove with the next release
-      (super.fetchpatch {
-        url = "https://github.com/ledger/ledger/commit/1cb9b84fdecc5604bd1172cdd781859ff3871a52.patch";
-        sha256 = "sha256-ipVkRcTmnEvpfyPgMzLVJ9Sz8QxHeCURQI5dX8xh758=";
-        excludes = [ "test/regress/*" ];
-      })
-    ];
-  });
-
   # Minimal set of packages to install everywhere
   minEnv = super.buildEnv {
     name = "minEnv";
@@ -112,14 +82,6 @@ in
     ] ++ builtins.filter self.lib.attrsets.isDerivation (builtins.attrValues self.nerd-fonts);
   };
 
-  # Packages pinned to nixos-24.05 for compatibility
-  legacyEnv = super.buildEnv {
-    name = "legacyEnv";
-    paths = [
-      self.ledger
-    ];
-  };
-
   # Packages pulled from nixos-unstable
   unstableEnv = super.buildEnv {
     name = "unstableEnv";
@@ -157,6 +119,7 @@ in
       self.graphviz
       self.icu
       self.imagemagick
+      self.ledger
       self.libheif
       self.libnotify # for nofify-send
       self.mupdf
